@@ -1,0 +1,21 @@
+@import '../../assets/styles/index.scss';
+
+.header {
+  padding-top: 45px;
+  padding-bottom: 45px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $grayish-blue;
+}
+.list {
+  display: flex;
+}
+
+.logo {
+  height: 20px;
+  margin-right: 55px;
+}
+
+.link {
+  color: $dark-grayish-blue;
+}
