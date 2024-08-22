@@ -24,17 +24,26 @@ nav {
   margin-right: auto;
 }
 
-.active {
-  padding-bottom: 64px;
-  border-bottom: 4px solid $orange;
-}
-
 .link {
+  position: relative;
   font-size: 18px;
   color: $dark-grayish-blue;
-  &:hover {
-    padding-bottom: 44px;
-    border-bottom: 4px solid $orange;
+  &::after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    top: 64px;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background-color: $orange;
+  }
+  &.active::after {
+    opacity: 1;
+  }
+
+  &:hover::after {
+    opacity: 1;
   }
 }
 

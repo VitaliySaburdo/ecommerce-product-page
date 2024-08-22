@@ -25,47 +25,67 @@ export const Header = () => {
           />
           <nav>
             <ul className={style.list}>
-              <li className={activeLink === 'collections' ? style.active : ''}>
+              <li>
                 <a
                   href="#"
                   onClick={() => handleOnActiveLink('collections')}
-                  className={style.link}
+                  className={
+                    activeLink === 'collections'
+                      ? `${style.link} ${style.active}`
+                      : `${style.link}`
+                  }
                 >
                   Collections
                 </a>
               </li>
-              <li className={activeLink === 'men' ? style.active : ''}>
+              <li>
                 <a
                   onClick={() => handleOnActiveLink('men')}
                   href="#"
-                  className={style.link}
+                  className={
+                    activeLink === 'men'
+                      ? `${style.link} ${style.active}`
+                      : `${style.link}`
+                  }
                 >
                   Men
                 </a>
               </li>
-              <li className={activeLink === 'women' ? style.active : ''}>
+              <li>
                 <a
                   onClick={() => handleOnActiveLink('women')}
                   href="#"
-                  className={style.link}
+                  className={
+                    activeLink === 'women'
+                      ? `${style.link} ${style.active}`
+                      : `${style.link}`
+                  }
                 >
                   Women
                 </a>
               </li>
-              <li className={activeLink === 'about' ? style.active : ''}>
+              <li>
                 <a
                   onClick={() => handleOnActiveLink('about')}
                   href="#"
-                  className={style.link}
+                  className={
+                    activeLink === 'about'
+                      ? `${style.link} ${style.active}`
+                      : `${style.link}`
+                  }
                 >
                   About
                 </a>
               </li>
-              <li className={activeLink === 'contact' ? style.active : ''}>
+              <li>
                 <a
                   onClick={() => handleOnActiveLink('contact')}
                   href="#"
-                  className={style.link}
+                  className={
+                    activeLink === 'contact'
+                      ? `${style.link} ${style.active}`
+                      : `${style.link}`
+                  }
                 >
                   Contact
                 </a>
