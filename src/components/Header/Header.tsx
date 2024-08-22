@@ -8,6 +8,8 @@ import style from './Header.module.scss';
 export const Header = () => {
   const [activeLink, setActiveLink] = useState<string>('women');
 
+  const linkArr = ['collections', 'men', 'women', 'about', 'contact'];
+
   const handleOnActiveLink = (nameLink: string) => {
     setActiveLink(nameLink);
   };
@@ -25,71 +27,23 @@ export const Header = () => {
           />
           <nav>
             <ul className={style.list}>
-              <li>
-                <a
-                  href="#"
-                  onClick={() => handleOnActiveLink('collections')}
-                  className={
-                    activeLink === 'collections'
-                      ? `${style.link} ${style.active}`
-                      : `${style.link}`
-                  }
-                >
-                  Collections
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => handleOnActiveLink('men')}
-                  href="#"
-                  className={
-                    activeLink === 'men'
-                      ? `${style.link} ${style.active}`
-                      : `${style.link}`
-                  }
-                >
-                  Men
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => handleOnActiveLink('women')}
-                  href="#"
-                  className={
-                    activeLink === 'women'
-                      ? `${style.link} ${style.active}`
-                      : `${style.link}`
-                  }
-                >
-                  Women
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => handleOnActiveLink('about')}
-                  href="#"
-                  className={
-                    activeLink === 'about'
-                      ? `${style.link} ${style.active}`
-                      : `${style.link}`
-                  }
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => handleOnActiveLink('contact')}
-                  href="#"
-                  className={
-                    activeLink === 'contact'
-                      ? `${style.link} ${style.active}`
-                      : `${style.link}`
-                  }
-                >
-                  Contact
-                </a>
-              </li>
+              {linkArr.map((item, idx) => {
+                return (
+                  <li key={idx}>
+                    <a
+                      href="#"
+                      onClick={() => handleOnActiveLink(item)}
+                      className={
+                        activeLink === item
+                          ? `${style.link} ${style.active}`
+                          : `${style.link}`
+                      }
+                    >
+                      {item}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
           <ul className={style.user__menu}>
