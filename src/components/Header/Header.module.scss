@@ -25,18 +25,19 @@ nav {
 }
 
 .active {
-  padding-bottom: 66px;
-  border-bottom: 2px solid red;
+  padding-bottom: 64px;
+  border-bottom: 4px solid $orange;
 }
 
 .link {
   font-size: 18px;
   color: $dark-grayish-blue;
   &:hover {
-    padding-bottom: 46px;
-    border-bottom: 2px solid red;
+    padding-bottom: 44px;
+    border-bottom: 4px solid $orange;
   }
 }
+
 .user__menu {
   display: flex;
   align-items: center;

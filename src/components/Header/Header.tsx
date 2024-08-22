@@ -6,7 +6,7 @@ import avatar from '../../assets/images/image-avatar.png';
 import style from './Header.module.scss';
 
 export const Header = () => {
-  const [activeLink, setActiveLink] = useState<string>('men');
+  const [activeLink, setActiveLink] = useState<string>('women');
 
   const handleOnActiveLink = (nameLink: string) => {
     setActiveLink(nameLink);
