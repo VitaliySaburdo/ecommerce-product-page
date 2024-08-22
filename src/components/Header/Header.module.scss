@@ -1,21 +1,53 @@
 @import '../../assets/styles/index.scss';
 
 .header {
-  padding-top: 45px;
-  padding-bottom: 45px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid $grayish-blue;
 }
-.list {
-  display: flex;
-}
 
 .logo {
-  height: 20px;
-  margin-right: 55px;
+  height: 22px;
+}
+
+.list {
+  display: flex;
+  gap: 35px;
+  height: 22px;
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+nav {
+  margin-left: 55px;
+  margin-right: auto;
+}
+
+.active {
+  padding-bottom: 66px;
+  border-bottom: 2px solid red;
 }
 
 .link {
+  font-size: 18px;
   color: $dark-grayish-blue;
+  &:hover {
+    padding-bottom: 45px;
+    border-bottom: 2px solid red;
+  }
+}
+.user__menu {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.btn {
+  display: flex;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  height: 100%;
 }
