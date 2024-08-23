@@ -1,7 +1,8 @@
 import { Container } from '../Container';
-import { Header } from '../Header/Header';
-import { ProductShowBar } from '../ProductShowBar/ProductShowBar';
-import './App.module.scss';
+import { Description } from '../Description';
+import { Header } from '../Header';
+import { ProductShowBar } from '../ProductShowBar';
+import style from './App.module.scss';
 
 function App() {
   return (
@@ -10,7 +11,10 @@ function App() {
       <main>
         <section>
           <Container>
-            <ProductShowBar />
+            <div className={style.wrapper}>
+              <ProductShowBar />
+              <Description />
+            </div>
           </Container>
         </section>
       </main>
