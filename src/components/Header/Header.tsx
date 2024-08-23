@@ -48,7 +48,13 @@ export const Header = () => {
           <ul className={style.user__menu}>
             <li>
               <button className={style.btn}>
-                <img src={cart} alt="cart" width={22} height={22} />
+                <img
+                  className={style.cart__img}
+                  src={cart}
+                  alt="cart"
+                  width={22}
+                  height={22}
+                />
               </button>
             </li>
             <li>

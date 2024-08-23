@@ -30,8 +30,8 @@ export const ProductShowBar = () => {
           className={style.main__img}
           src={images.find((img) => img.thumbnail === activeImg)?.full}
           alt="product"
-          width={450}
-          height={450}
+          width={500}
+          height={500}
         />
         <ul className={style.list}>
           {images.map((item, idx) => {

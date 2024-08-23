@@ -1,7 +1,7 @@
 @import '../../assets/styles/index.scss';
 .list {
   display: flex;
-  gap: 30px;
+  justify-content: space-between;
 }
 
 .main__img {
