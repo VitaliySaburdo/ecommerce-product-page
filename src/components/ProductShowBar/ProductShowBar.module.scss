@@ -1,10 +1,4 @@
 @import '../../assets/styles/index.scss';
-
-.wrapper {
-  padding-left: 45px;
-  padding-right: 45px;
-}
-
 .list {
   display: flex;
   gap: 30px;
@@ -13,11 +7,6 @@
 .main__img {
   border-radius: 15px;
   margin-bottom: 30px;
-}
-
-.img__thumbnail {
-  width: 90px;
-  height: 90px;
 }
 
 .btn {

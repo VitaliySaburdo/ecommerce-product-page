@@ -54,6 +54,8 @@ export const ProductShowBar = () => {
                     }
                     src={item.thumbnail}
                     alt="shoes"
+                    width={90}
+                    height={90}
                   />
                 </button>
               </li>

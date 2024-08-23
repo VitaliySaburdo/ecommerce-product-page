@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Container } from '../Container';
 import logo from '../../assets/images/logo.svg';
 import cart from '../../assets/images/icon-cart.svg';
 import avatar from '../../assets/images/image-avatar.png';
@@ -16,7 +15,7 @@ export const Header = () => {
 
   return (
     <>
-      <Container>
+      <div className={style.heder__container}>
         <header className={style.header}>
           <img
             className={style.logo}
@@ -59,7 +58,7 @@ export const Header = () => {
             </li>
           </ul>
         </header>
-      </Container>
+      </div>
     </>
   );
 };
