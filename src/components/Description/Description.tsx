@@ -7,6 +7,8 @@ import { useState } from 'react';
 export const Description = () => {
   const [count, setCount] = useState(0);
 
+  const price = 125;
+
   const decrementCount = () => {
     setCount((prevState) => {
       if (prevState <= 0) return prevState;
@@ -28,7 +30,7 @@ export const Description = () => {
         weather can offer.
       </p>
       <div className={style.info}>
-        <p className={style.price}>$125.00</p>
+        <p className={style.price}>${price.toFixed(2)}</p>
         <p className={style.discount}>50%</p>
       </div>
       <p className={style.old__price}>$250.00</p>
