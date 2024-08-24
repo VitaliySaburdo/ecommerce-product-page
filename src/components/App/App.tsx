@@ -1,4 +1,4 @@
-import { Cart } from '../Cart';
+// import { Cart } from '../Cart';
 import { Container } from '../Container';
 import { Description } from '../Description';
 import { Header } from '../Header';
@@ -16,7 +16,7 @@ function App() {
               <ProductShowBar />
               <Description />
             </div>
-            <Cart />
+            {/* <Cart /> */}
           </Container>
         </section>
       </main>

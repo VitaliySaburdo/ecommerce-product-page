@@ -5,10 +5,14 @@
 }
 
 .wrapper {
+  position: absolute;
+  top: 70px;
+  right: 200px;
   width: 310px;
   height: 210px;
   border-radius: 10px;
   border: 1px solid $black;
+  background-color: $white;
 }
 
 .decor {

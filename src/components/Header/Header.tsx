@@ -3,9 +3,11 @@ import logo from '../../assets/images/logo.svg';
 import cart from '../../assets/images/icon-cart.svg';
 import avatar from '../../assets/images/image-avatar.png';
 import style from './Header.module.scss';
+import { Cart } from '../Cart';
 
 export const Header = () => {
   const [activeLink, setActiveLink] = useState<string>('women');
+  const [isCartVisible, setIsCartVisible] = useState<boolean>(false);
 
   const linkArr = ['collections', 'men', 'women', 'about', 'contact'];
 
@@ -46,8 +48,12 @@ export const Header = () => {
             </ul>
           </nav>
           <ul className={style.user__menu}>
-            <li>
-              <button className={style.btn}>
+            <li className={style.cart__container}>
+              <button
+                onMouseEnter={() => setIsCartVisible(true)}
+                onMouseLeave={() => setIsCartVisible(false)}
+                className={style.btn}
+              >
                 <img
                   className={style.cart__img}
                   src={cart}
@@ -61,6 +67,7 @@ export const Header = () => {
               <button className={style.btn}>
                 <img src={avatar} alt="avatar" width={52} height={52} />
               </button>
+              {isCartVisible && <Cart />}
             </li>
           </ul>
         </header>
