@@ -5,7 +5,18 @@ import avatar from '../../assets/images/image-avatar.png';
 import style from './Header.module.scss';
 import { Cart } from '../Cart';
 
-export const Header = () => {
+interface Order {
+  img: string;
+  name: string;
+  price: number;
+  count: number;
+  total: number;
+}
+interface HeaderProps {
+  orders?: Order[];
+}
+
+export const Header = ({ orders }: HeaderProps) => {
   const [activeLink, setActiveLink] = useState<string>('women');
   const [isCartVisible, setIsCartVisible] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -78,7 +89,9 @@ export const Header = () => {
               <button className={style.btn}>
                 <img src={avatar} alt="avatar" width={52} height={52} />
               </button>
-              {isCartVisible && <Cart setIsHovered={setIsHovered} />}
+              {isCartVisible && (
+                <Cart orders={orders} setIsHovered={setIsHovered} />
+              )}
             </li>
           </ul>
         </header>

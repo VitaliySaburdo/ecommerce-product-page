@@ -14,16 +14,15 @@ interface Order {
 }
 
 function App() {
-  const [orders, setOrders] = useState<Order>();
+  const [orders, setOrders] = useState<Order[]>([]);
 
   const addToCart = (order: Order) => {
-    setOrders(order);
+    setOrders([order]);
   };
-  console.log(orders);
 
   return (
     <>
-      <Header />
+      <Header orders={orders} />
       <main>
         <section>
           <Container>
