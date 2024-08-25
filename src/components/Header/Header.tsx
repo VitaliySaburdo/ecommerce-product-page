@@ -94,6 +94,7 @@ export const Header = ({ orders }: HeaderProps) => {
               )}
             </li>
           </ul>
+          <Cart orders={orders} setIsHovered={setIsHovered} />
         </header>
       </div>
     </>

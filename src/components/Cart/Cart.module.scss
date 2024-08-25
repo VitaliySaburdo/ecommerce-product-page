@@ -21,5 +21,40 @@
 }
 .box {
   @include centered-flex;
-  height: 190px;
+  margin-bottom: 25px;
+}
+
+.img {
+  border-radius: 5px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  padding: 0;
+  cursor: pointer;
+}
+
+.shell {
+  padding: 25px 25px 35px 25px;
+}
+
+.confirm__btn {
+  background-color: $orange;
+  color: $black;
+  border: none;
+  @include centered-flex;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 55px;
+  border-radius: 10px;
+  font-weight: $bold;
+  font-size: 18px;
 }
