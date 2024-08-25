@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logo from '../../assets/images/logo.svg';
 import cart from '../../assets/images/icon-cart.svg';
 import avatar from '../../assets/images/image-avatar.png';
@@ -8,6 +8,14 @@ import { Cart } from '../Cart';
 export const Header = () => {
   const [activeLink, setActiveLink] = useState<string>('women');
   const [isCartVisible, setIsCartVisible] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!isHovered) {
+      const timer = setTimeout(() => setIsCartVisible(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isHovered]);
 
   const linkArr = ['collections', 'men', 'women', 'about', 'contact'];
 
@@ -50,8 +58,11 @@ export const Header = () => {
           <ul className={style.user__menu}>
             <li className={style.cart__container}>
               <button
-                onMouseEnter={() => setIsCartVisible(true)}
-                onMouseLeave={() => setIsCartVisible(false)}
+                onMouseEnter={() => {
+                  setIsCartVisible(true);
+                  setIsHovered(true);
+                }}
+                onMouseLeave={() => setIsHovered(false)}
                 className={style.btn}
               >
                 <img
@@ -67,7 +78,7 @@ export const Header = () => {
               <button className={style.btn}>
                 <img src={avatar} alt="avatar" width={52} height={52} />
               </button>
-              {isCartVisible && <Cart />}
+              {isCartVisible && <Cart setIsHovered={setIsHovered} />}
             </li>
           </ul>
         </header>

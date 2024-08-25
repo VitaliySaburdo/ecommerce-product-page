@@ -1,13 +1,43 @@
+import { useState } from 'react';
 import minus from '../../assets/images/icon-minus.svg';
 import plus from '../../assets/images/icon-plus.svg';
 import cart_black from '../../assets/images/icon-cart-black.svg';
+import img from '../../assets/images/image-product-1-thumbnail.jpg';
 import style from './Description.module.scss';
-import { useState } from 'react';
 
-export const Description = () => {
+interface Order {
+  img: string;
+  name: string;
+  price: number;
+  count: number;
+  total: number;
+}
+
+interface descriptionProps {
+  addToCart: (order: Order) => void;
+}
+
+export const Description: React.FC<descriptionProps> = ({ addToCart }) => {
   const [count, setCount] = useState(0);
 
+  const addOrder = () => {
+    if (count === 0) {
+      alert('Specify the quantity of the product');
+      return;
+    }
+    const newOrder: Order = {
+      img: img,
+      name: name,
+      price: price,
+      count: count,
+      total: price * count,
+    };
+    addToCart(newOrder);
+    setCount(0);
+  };
+
   const price = 125;
+  const name = 'Fall Limited Edition Sneakers';
 
   const decrementCount = () => {
     setCount((prevState) => {
@@ -23,7 +53,7 @@ export const Description = () => {
   return (
     <div>
       <p className={style.name}>SNEAKER COMPANY</p>
-      <h1 className={style.title}>Fall Limited Edition Sneakers</h1>
+      <h1 className={style.title}>{name}</h1>
       <p className={style.description}>
         This low-profile sneakers are your perfect casual wear companion.
         Featuring a durable rubber outer sole, they`ll withstand everything the
@@ -44,7 +74,7 @@ export const Description = () => {
             <img src={plus} alt="plus" />
           </button>
         </div>
-        <button className={style.cat__btn}>
+        <button onClick={addOrder} className={style.cat__btn}>
           <img className={style.cart__img} src={cart_black} alt="cart" /> Add to
           cart
         </button>
