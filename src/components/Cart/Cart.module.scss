@@ -8,7 +8,6 @@
   position: absolute;
   top: 80px;
   right: 200px;
-  width: 310px;
   border-radius: 10px;
   background-color: $white;
   box-shadow: 0px 8px 23px -5px rgba(0, 0, 0, 0.45);
@@ -26,6 +25,15 @@
 
 .img {
   border-radius: 5px;
+  margin-right: 20px;
+}
+
+.text {
+  margin-right: 25px;
+}
+
+.txt {
+  padding: 90px 110px 90px 110px;
 }
 
 .item {
@@ -57,4 +65,9 @@
   border-radius: 10px;
   font-weight: $bold;
   font-size: 18px;
+}
+
+.total {
+  color: $black;
+  font-weight: $bold;
 }

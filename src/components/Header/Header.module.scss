@@ -75,5 +75,17 @@ nav {
 }
 
 .cart__img {
-  fill: #69707d;
+  position: relative;
+}
+
+.count {
+  position: absolute;
+  top: -5px;
+  right: -7px;
+  min-width: 18px;
+  height: 12px;
+  font-size: 10px;
+  background-color: $orange;
+  color: $white;
+  border-radius: 5px;
 }

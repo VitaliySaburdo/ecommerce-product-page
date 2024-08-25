@@ -20,9 +20,13 @@ function App() {
     setOrders([order]);
   };
 
+  const handleDelete = (index: number) => {
+    setOrders(orders.filter((_, idx) => idx !== index));
+  };
+
   return (
     <>
-      <Header orders={orders} />
+      <Header orders={orders} onDelete={handleDelete} />
       <main>
         <section>
           <Container>

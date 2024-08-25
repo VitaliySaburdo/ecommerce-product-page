@@ -14,9 +14,10 @@ interface Order {
 }
 interface HeaderProps {
   orders?: Order[];
+  onDelete: (index: number) => void;
 }
 
-export const Header = ({ orders }: HeaderProps) => {
+export const Header = ({ orders, onDelete }: HeaderProps) => {
   const [activeLink, setActiveLink] = useState<string>('women');
   const [isCartVisible, setIsCartVisible] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -83,6 +84,9 @@ export const Header = ({ orders }: HeaderProps) => {
                   width={22}
                   height={22}
                 />
+                {orders && orders.length > 0 && (
+                  <span className={style.count}>{orders[0].count}</span>
+                )}
               </button>
             </li>
             <li>
@@ -90,11 +94,14 @@ export const Header = ({ orders }: HeaderProps) => {
                 <img src={avatar} alt="avatar" width={52} height={52} />
               </button>
               {isCartVisible && (
-                <Cart orders={orders} setIsHovered={setIsHovered} />
+                <Cart
+                  orders={orders}
+                  setIsHovered={setIsHovered}
+                  onDelete={onDelete}
+                />
               )}
             </li>
           </ul>
-          <Cart orders={orders} setIsHovered={setIsHovered} />
         </header>
       </div>
     </>
