@@ -49,6 +49,7 @@ nav {
     height: 4px;
     width: 100%;
     background-color: $orange;
+    transition: opacity 0.3s;
   }
   &.active::after {
     opacity: 1;
@@ -65,7 +66,8 @@ nav {
   gap: 50px;
 }
 
-.btn {
+.btn,
+.btn__profile {
   position: relative;
   display: flex;
   border: none;
@@ -73,6 +75,16 @@ nav {
   background-color: transparent;
   cursor: pointer;
   height: 100%;
+}
+
+.btn__profile {
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 0 2px transparent;
+
+  &:hover {
+    box-shadow: 0 0 0 2px $orange;
+  }
 }
 
 .cart__img {

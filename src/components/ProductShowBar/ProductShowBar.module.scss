@@ -25,7 +25,13 @@
 
 .img__thumbnail {
   opacity: 1;
+  transition: opacity 0.3s;
+
   &:hover {
     opacity: 0.5;
   }
+}
+
+.activeThumbnail {
+  opacity: 0.5;
 }

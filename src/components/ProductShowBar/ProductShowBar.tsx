@@ -46,12 +46,9 @@ export const ProductShowBar = () => {
                   }
                 >
                   <img
-                    className={style.img__thumbnail}
-                    style={
-                      activeImg === item.thumbnail
-                        ? { opacity: '0.5' }
-                        : { opacity: '1' }
-                    }
+                    className={`${style.img__thumbnail} ${
+                      activeImg === item.thumbnail ? style.activeThumbnail : ''
+                    }`}
                     src={item.thumbnail}
                     alt="shoes"
                     width={90}

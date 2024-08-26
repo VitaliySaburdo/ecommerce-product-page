@@ -72,6 +72,14 @@
   @include centered-flex;
   background-color: transparent;
   cursor: pointer;
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.btn > img {
+  opacity: 1;
 }
 
 .counter {
@@ -93,6 +101,10 @@
   text-align: center;
   border-radius: 10px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: rgb(255, 125, 26, 0.5);
+  }
 }
 
 .cart__img {

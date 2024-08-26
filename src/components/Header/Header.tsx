@@ -85,7 +85,7 @@ export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
               </button>
             </li>
             <li>
-              <button className={style.btn}>
+              <button className={style.btn__profile}>
                 <img src={avatar} alt="avatar" width={52} height={52} />
               </button>
               {isCartVisible && (
