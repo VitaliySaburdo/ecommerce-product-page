@@ -3,20 +3,26 @@
   display: flex;
   justify-content: space-between;
 }
+.modalList {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
 
 .main__img {
   border-radius: 15px;
   margin-bottom: 30px;
+  cursor: pointer;
 }
 
 .btn {
   border: none;
-  background-color: transparent;
   display: flex;
   padding: 0;
   cursor: pointer;
   border-radius: 10px;
   overflow: hidden;
+  background-color: $white;
 
   &.active {
     border: 2px solid $orange;
@@ -24,8 +30,8 @@
 }
 
 .img__thumbnail {
-  opacity: 1;
   transition: opacity 0.3s;
+  opacity: 1;
 
   &:hover {
     opacity: 0.5;

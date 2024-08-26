@@ -11,7 +11,7 @@ interface ModalProps {
 
 export const Modal: React.FC<ModalProps> = ({ onClick, children }) => {
   useEffect(() => {
-    const handleEscDown = (e) => {
+    const handleEscDown = (e: KeyboardEvent) => {
       if (e.code === 'Escape' && onClick) {
         onClick();
       }
@@ -22,7 +22,7 @@ export const Modal: React.FC<ModalProps> = ({ onClick, children }) => {
     };
   }, [onClick]);
 
-  const handleBackdropClick = (e) => {
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget && onClick) {
       onClick();
     }
