@@ -1,23 +1,18 @@
 import { useState, useEffect } from 'react';
+import { Order } from '../../types';
 import logo from '../../assets/images/logo.svg';
 import cart from '../../assets/images/icon-cart.svg';
 import avatar from '../../assets/images/image-avatar.png';
 import style from './Header.module.scss';
 import { Cart } from '../Cart';
 
-interface Order {
-  img: string;
-  name: string;
-  price: number;
-  count: number;
-  total: number;
-}
 interface HeaderProps {
   orders?: Order[];
-  onDelete: (index: number) => void;
+  onDelete: (id: string) => void;
+  onConfirm: (orders: Order[]) => void;
 }
 
-export const Header = ({ orders, onDelete }: HeaderProps) => {
+export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
   const [activeLink, setActiveLink] = useState<string>('women');
   const [isCartVisible, setIsCartVisible] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -98,6 +93,7 @@ export const Header = ({ orders, onDelete }: HeaderProps) => {
                   orders={orders}
                   setIsHovered={setIsHovered}
                   onDelete={onDelete}
+                  onConfirm={onConfirm}
                 />
               )}
             </li>

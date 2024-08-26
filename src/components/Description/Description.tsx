@@ -1,17 +1,11 @@
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
+import { Order } from '../../types';
 import minus from '../../assets/images/icon-minus.svg';
 import plus from '../../assets/images/icon-plus.svg';
 import cart_black from '../../assets/images/icon-cart-black.svg';
 import img from '../../assets/images/image-product-1-thumbnail.jpg';
 import style from './Description.module.scss';
-
-interface Order {
-  img: string;
-  name: string;
-  price: number;
-  count: number;
-  total: number;
-}
 
 interface descriptionProps {
   addToCart: (order: Order) => void;
@@ -26,6 +20,7 @@ export const Description: React.FC<descriptionProps> = ({ addToCart }) => {
       return;
     }
     const newOrder: Order = {
+      id: nanoid(),
       img: img,
       name: name,
       price: price,

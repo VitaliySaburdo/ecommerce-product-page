@@ -22,3 +22,10 @@
     border: 2px solid $orange;
   }
 }
+
+.img__thumbnail {
+  opacity: 1;
+  &:hover {
+    opacity: 0.5;
+  }
+}

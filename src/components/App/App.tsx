@@ -3,15 +3,8 @@ import { Container } from '../Container';
 import { Description } from '../Description';
 import { Header } from '../Header';
 import { ProductShowBar } from '../ProductShowBar';
+import { Order } from '../../types';
 import style from './App.module.scss';
-
-interface Order {
-  img: string;
-  name: string;
-  price: number;
-  count: number;
-  total: number;
-}
 
 function App() {
   const [orders, setOrders] = useState<Order[]>([]);
@@ -20,13 +13,21 @@ function App() {
     setOrders([order]);
   };
 
-  const handleDelete = (index: number) => {
-    setOrders(orders.filter((_, idx) => idx !== index));
+  const handleDelete = (id: string) => {
+    setOrders(orders.filter((order) => order.id !== id));
+  };
+
+  const HandleOnConfirm = (orders: Order[]) => {
+    setOrders(orders);
   };
 
   return (
     <>
-      <Header orders={orders} onDelete={handleDelete} />
+      <Header
+        orders={orders}
+        onDelete={handleDelete}
+        onConfirm={HandleOnConfirm}
+      />
       <main>
         <section>
           <Container>

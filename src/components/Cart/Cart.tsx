@@ -1,25 +1,28 @@
+import { Order } from '../../types';
 import deleteIcon from '../../assets/images/icon-delete.svg';
 import style from './Cart.module.scss';
-
-interface Order {
-  img: string;
-  name: string;
-  price: number;
-  count: number;
-  total: number;
-}
 
 interface CartProps {
   setIsHovered: (value: boolean) => void;
   orders?: Order[];
-  onDelete: (index: number) => void;
+  onDelete: (id: string) => void;
+  onConfirm: (orders: Order[]) => void;
 }
 
 export const Cart: React.FC<CartProps> = ({
   setIsHovered,
   orders,
   onDelete,
+  onConfirm,
 }) => {
+  const onConfirmBtn = () => {
+    console.log(orders);
+    onConfirm([]);
+    setTimeout(() => {
+      alert('Your order is confirmed. Check it in console');
+    }, 200);
+  };
+
   return (
     <div
       onMouseEnter={() => setIsHovered(true)}
@@ -33,8 +36,8 @@ export const Cart: React.FC<CartProps> = ({
           <div className={style.shell}>
             <div className={style.box}>
               <ul>
-                {orders.map((order, idx) => (
-                  <li key={idx} className={style.item}>
+                {orders.map((order) => (
+                  <li key={order.id} className={style.item}>
                     <img
                       className={style.img}
                       src={order.img}
@@ -51,14 +54,19 @@ export const Cart: React.FC<CartProps> = ({
                         </span>
                       </p>
                     </div>
-                    <button onClick={() => onDelete(idx)} className={style.btn}>
+                    <button
+                      onClick={() => onDelete(order.id)}
+                      className={style.btn}
+                    >
                       <img src={deleteIcon} alt="delete" />
                     </button>
                   </li>
                 ))}
               </ul>
             </div>
-            <button className={style.confirm__btn}>Checkout</button>
+            <button onClick={onConfirmBtn} className={style.confirm__btn}>
+              Checkout
+            </button>
           </div>
         </>
       ) : (
