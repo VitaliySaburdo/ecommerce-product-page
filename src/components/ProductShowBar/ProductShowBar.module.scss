@@ -1,0 +1,24 @@
+@import '../../assets/styles/index.scss';
+.list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__img {
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+
+  &.active {
+    border: 2px solid $orange;
+  }
+}

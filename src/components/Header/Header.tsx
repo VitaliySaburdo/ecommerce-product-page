@@ -1,12 +1,33 @@
-import { useState } from 'react';
-import { Container } from '../Container';
+import { useState, useEffect } from 'react';
 import logo from '../../assets/images/logo.svg';
 import cart from '../../assets/images/icon-cart.svg';
 import avatar from '../../assets/images/image-avatar.png';
 import style from './Header.module.scss';
+import { Cart } from '../Cart';
 
-export const Header = () => {
+interface Order {
+  img: string;
+  name: string;
+  price: number;
+  count: number;
+  total: number;
+}
+interface HeaderProps {
+  orders?: Order[];
+  onDelete: (index: number) => void;
+}
+
+export const Header = ({ orders, onDelete }: HeaderProps) => {
   const [activeLink, setActiveLink] = useState<string>('women');
+  const [isCartVisible, setIsCartVisible] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!isHovered) {
+      const timer = setTimeout(() => setIsCartVisible(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isHovered]);
 
   const linkArr = ['collections', 'men', 'women', 'about', 'contact'];
 
@@ -16,7 +37,7 @@ export const Header = () => {
 
   return (
     <>
-      <Container>
+      <div className={style.heder__container}>
         <header className={style.header}>
           <img
             className={style.logo}
@@ -47,19 +68,42 @@ export const Header = () => {
             </ul>
           </nav>
           <ul className={style.user__menu}>
-            <li>
-              <button className={style.btn}>
-                <img src={cart} alt="cart" width={22} height={22} />
+            <li className={style.cart__container}>
+              <button
+                onMouseEnter={() => {
+                  setIsCartVisible(true);
+                  setIsHovered(true);
+                }}
+                onMouseLeave={() => setIsHovered(false)}
+                className={style.btn}
+              >
+                <img
+                  className={style.cart__img}
+                  src={cart}
+                  alt="cart"
+                  width={22}
+                  height={22}
+                />
+                {orders && orders.length > 0 && (
+                  <span className={style.count}>{orders[0].count}</span>
+                )}
               </button>
             </li>
             <li>
               <button className={style.btn}>
                 <img src={avatar} alt="avatar" width={52} height={52} />
               </button>
+              {isCartVisible && (
+                <Cart
+                  orders={orders}
+                  setIsHovered={setIsHovered}
+                  onDelete={onDelete}
+                />
+              )}
             </li>
           </ul>
         </header>
-      </Container>
+      </div>
     </>
   );
 };

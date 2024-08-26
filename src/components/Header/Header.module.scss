@@ -1,5 +1,16 @@
 @import '../../assets/styles/index.scss';
 
+.heder__container {
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (min-width: 375px) {
+    width: 375px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+  }
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -55,10 +66,27 @@ nav {
 }
 
 .btn {
+  position: relative;
   display: flex;
   border: none;
   padding: 0;
   background-color: transparent;
   cursor: pointer;
   height: 100%;
+}
+
+.cart__img {
+  position: relative;
+}
+
+.count {
+  position: absolute;
+  top: -5px;
+  right: -7px;
+  min-width: 18px;
+  height: 12px;
+  font-size: 10px;
+  background-color: $orange;
+  color: $white;
+  border-radius: 5px;
 }

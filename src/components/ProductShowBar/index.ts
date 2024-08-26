@@ -1,0 +1,1 @@
+export { ProductShowBar } from './ProductShowBar';
