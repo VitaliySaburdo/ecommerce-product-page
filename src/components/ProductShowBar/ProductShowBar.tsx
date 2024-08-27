@@ -8,21 +8,21 @@ import product_1_thumbnail from '../../assets/images/image-product-1-thumbnail.j
 import product_2_thumbnail from '../../assets/images/image-product-2-thumbnail.jpg';
 import product_3_thumbnail from '../../assets/images/image-product-3-thumbnail.jpg';
 import product_4_thumbnail from '../../assets/images/image-product-4-thumbnail.jpg';
-import IconNext from '../../assets/images/icon-next.svg';
-import IconPrev from '../../assets/images/icon-previous.svg';
-import IconClose from '../../assets/images/icon-close.svg';
+import IconNext from '../../assets/images/icon-next.svg?react';
+import IconPrev from '../../assets/images/icon-previous.svg?react';
+import IconClose from '../../assets/images/icon-close.svg?react';
 import style from './ProductShowBar.module.scss';
 
 export const ProductShowBar = () => {
   const [activeImg, setActiveImg] = useState(product_1_thumbnail);
-  const [activeModalImg, setActiveModalImg] = useState(product_1_thumbnail);
+  const [currentIdx, setCurrentIdx] = useState(0);
 
   const HandleOnClick = (img: string) => {
     setActiveImg(img);
   };
 
-  const HandleOnModalClick = (img: string) => {
-    setActiveModalImg(img);
+  const HandleOnModalClick = (idx: number) => {
+    setCurrentIdx(idx);
   };
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -39,6 +39,22 @@ export const ProductShowBar = () => {
 
   const handleModalClose = () => {
     setIsModalOpen(false);
+  };
+
+  const onNextBtn = () => {
+    setCurrentIdx(currentIdx + 1);
+    if (currentIdx === 3) {
+      setCurrentIdx(0);
+    }
+    return images[currentIdx].full;
+  };
+
+  const onPrevBtn = () => {
+    setCurrentIdx(currentIdx - 1);
+    if (currentIdx === 0) {
+      setCurrentIdx(3);
+    }
+    return images[currentIdx].full;
   };
 
   return (
@@ -83,37 +99,41 @@ export const ProductShowBar = () => {
         <Modal onClick={handleModalClose}>
           <div className={style.wrapper}>
             <button className={style.close__btn}>
-              <img src={IconClose} alt="icon-close" />
+              <IconClose />
             </button>
             <img
               className={style.main__img}
-              src={images.find((img) => img.thumbnail === activeModalImg)?.full}
+              src={images[currentIdx].full}
               alt="product"
               width={550}
               height={550}
             />
-            <button className={style.next__btn}>
-              <img src={IconPrev} alt="icon-previous" />
+            <button
+              onClick={onPrevBtn}
+              className={`${style.slide__btn} ${style.previous}`}
+            >
+              <IconPrev className={style.icon} />
             </button>
-            <button className={style.next__btn}>
-              <img src={IconNext} alt="icon-next" />
+            <button
+              onClick={onNextBtn}
+              className={`${style.slide__btn} ${style.next}`}
+            >
+              <IconNext className={style.icon} />
             </button>
             <ul className={style.modalList}>
               {images.map((item, idx) => (
                 <li key={idx}>
                   <button
-                    onClick={() => HandleOnModalClick(item.thumbnail)}
+                    onClick={() => HandleOnModalClick(idx)}
                     className={
-                      activeModalImg === item.thumbnail
+                      currentIdx === idx
                         ? `${style.btn} ${style.active}`
                         : style.btn
                     }
                   >
                     <img
                       className={`${style.img__thumbnail} ${
-                        activeModalImg === item.thumbnail
-                          ? style.activeThumbnail
-                          : ''
+                        currentIdx === idx ? style.activeThumbnail : ''
                       }`}
                       src={item.thumbnail}
                       alt="shoes"

@@ -62,6 +62,25 @@
   }
 }
 
-.close__btn > img {
-  color: currentColor;
+.slide__btn {
+  position: absolute;
+  @include invisible-btn;
+  @include centered-flex;
+  color: #69707d;
+  top: 245px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: $white;
+  color: #1d2026;
+  &:hover {
+    color: $orange;
+  }
+}
+
+.previous {
+  left: -30px;
+}
+.next {
+  right: -30px;
 }
