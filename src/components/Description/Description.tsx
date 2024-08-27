@@ -12,10 +12,10 @@ interface descriptionProps {
 }
 
 export const Description: React.FC<descriptionProps> = ({ addToCart }) => {
-  const [count, setCount] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
   const addOrder = () => {
-    if (count === 0) {
+    if (quantity === 0) {
       alert('Specify the quantity of the product');
       return;
     }
@@ -24,25 +24,25 @@ export const Description: React.FC<descriptionProps> = ({ addToCart }) => {
       img: img,
       name: name,
       price: price,
-      quantity: count,
-      total: price * count,
+      quantity: quantity,
+      total: price * quantity,
     };
     addToCart(newOrder);
-    setCount(0);
+    setQuantity(0);
   };
 
   const price = 125;
   const name = 'Fall Limited Edition Sneakers';
 
   const decrementCount = () => {
-    setCount((prevState) => {
+    setQuantity((prevState) => {
       if (prevState <= 0) return prevState;
       return prevState - 1;
     });
   };
 
   const incrementCount = () => {
-    setCount((prevState) => prevState + 1);
+    setQuantity((prevState) => prevState + 1);
   };
 
   return (
@@ -64,7 +64,7 @@ export const Description: React.FC<descriptionProps> = ({ addToCart }) => {
           <button onClick={decrementCount} className={style.btn}>
             <img src={minus} alt="minus" />
           </button>
-          <span className={style.counter}>{count}</span>
+          <span className={style.counter}>{quantity}</span>
           <button onClick={incrementCount} className={style.btn}>
             <img src={plus} alt="plus" />
           </button>
