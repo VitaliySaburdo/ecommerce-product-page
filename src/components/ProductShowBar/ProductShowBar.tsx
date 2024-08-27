@@ -40,6 +40,7 @@ export const ProductShowBar = () => {
 
   const handleModalClose = () => {
     setIsModalOpen(false);
+    setActiveImg(currentIdx);
   };
 
   const onNextBtn = () => {
