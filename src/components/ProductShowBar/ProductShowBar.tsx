@@ -16,6 +16,14 @@ import style from './ProductShowBar.module.scss';
 export const ProductShowBar = () => {
   const [activeImg, setActiveImg] = useState(0);
   const [currentIdx, setCurrentIdx] = useState(activeImg);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const images = [
+    { thumbnail: product_1_thumbnail, full: product_1 },
+    { thumbnail: product_2_thumbnail, full: product_2 },
+    { thumbnail: product_3_thumbnail, full: product_3 },
+    { thumbnail: product_4_thumbnail, full: product_4 },
+  ];
 
   const HandleOnClick = (idx: number) => {
     setActiveImg(idx);
@@ -25,14 +33,6 @@ export const ProductShowBar = () => {
   const HandleOnModalClick = (idx: number) => {
     setCurrentIdx(idx);
   };
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const images = [
-    { thumbnail: product_1_thumbnail, full: product_1 },
-    { thumbnail: product_2_thumbnail, full: product_2 },
-    { thumbnail: product_3_thumbnail, full: product_3 },
-    { thumbnail: product_4_thumbnail, full: product_4 },
-  ];
 
   const handleImageClick = () => {
     setIsModalOpen(true);
