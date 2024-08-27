@@ -41,3 +41,27 @@
 .activeThumbnail {
   opacity: 0.5;
 }
+
+.wrapper {
+  position: relative;
+}
+
+.next__btn {
+  position: absolute;
+  @include invisible-btn;
+}
+
+.close__btn {
+  position: absolute;
+  @include invisible-btn;
+  top: -40px;
+  right: 0;
+  color: #69707d;
+  &:hover {
+    color: $orange;
+  }
+}
+
+.close__btn > img {
+  color: currentColor;
+}

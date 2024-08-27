@@ -8,6 +8,9 @@ import product_1_thumbnail from '../../assets/images/image-product-1-thumbnail.j
 import product_2_thumbnail from '../../assets/images/image-product-2-thumbnail.jpg';
 import product_3_thumbnail from '../../assets/images/image-product-3-thumbnail.jpg';
 import product_4_thumbnail from '../../assets/images/image-product-4-thumbnail.jpg';
+import IconNext from '../../assets/images/icon-next.svg';
+import IconPrev from '../../assets/images/icon-previous.svg';
+import IconClose from '../../assets/images/icon-close.svg';
 import style from './ProductShowBar.module.scss';
 
 export const ProductShowBar = () => {
@@ -79,6 +82,9 @@ export const ProductShowBar = () => {
       {isModalOpen && (
         <Modal onClick={handleModalClose}>
           <div className={style.wrapper}>
+            <button className={style.close__btn}>
+              <img src={IconClose} alt="icon-close" />
+            </button>
             <img
               className={style.main__img}
               src={images.find((img) => img.thumbnail === activeModalImg)?.full}
@@ -86,6 +92,12 @@ export const ProductShowBar = () => {
               width={550}
               height={550}
             />
+            <button className={style.next__btn}>
+              <img src={IconPrev} alt="icon-previous" />
+            </button>
+            <button className={style.next__btn}>
+              <img src={IconNext} alt="icon-next" />
+            </button>
             <ul className={style.modalList}>
               {images.map((item, idx) => (
                 <li key={idx}>

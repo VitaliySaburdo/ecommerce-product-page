@@ -1,0 +1,12 @@
+@import '../../assets/styles/index.scss';
+
+.close__btn {
+  position: absolute;
+  @include invisible-btn;
+  top: -40px;
+  right: 0;
+  fill: #69707d;
+  &:hover {
+    fill: $orange;
+  }
+}

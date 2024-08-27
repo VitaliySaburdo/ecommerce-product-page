@@ -25,6 +25,13 @@
   justify-content: center;
 }
 
+@mixin invisible-btn() {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
 @mixin mq($range) {
   $mob: 375px;
   $tab: 768px;
