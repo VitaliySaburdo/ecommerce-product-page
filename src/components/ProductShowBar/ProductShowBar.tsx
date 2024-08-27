@@ -14,11 +14,12 @@ import IconClose from '../../assets/images/icon-close.svg?react';
 import style from './ProductShowBar.module.scss';
 
 export const ProductShowBar = () => {
-  const [activeImg, setActiveImg] = useState(product_1_thumbnail);
-  const [currentIdx, setCurrentIdx] = useState(0);
+  const [activeImg, setActiveImg] = useState(0);
+  const [currentIdx, setCurrentIdx] = useState(activeImg);
 
-  const HandleOnClick = (img: string) => {
-    setActiveImg(img);
+  const HandleOnClick = (idx: number) => {
+    setActiveImg(idx);
+    setCurrentIdx(idx);
   };
 
   const HandleOnModalClick = (idx: number) => {
@@ -63,7 +64,7 @@ export const ProductShowBar = () => {
         <img
           onClick={handleImageClick}
           className={style.main__img}
-          src={images.find((img) => img.thumbnail === activeImg)?.full}
+          src={images[activeImg].full}
           alt="product"
           width={500}
           height={500}
@@ -73,16 +74,16 @@ export const ProductShowBar = () => {
             return (
               <li key={idx}>
                 <button
-                  onClick={() => HandleOnClick(item.thumbnail)}
+                  onClick={() => HandleOnClick(idx)}
                   className={
-                    activeImg === item.thumbnail
+                    activeImg === idx
                       ? `${style.btn} ${style.active}`
                       : style.btn
                   }
                 >
                   <img
                     className={`${style.img__thumbnail} ${
-                      activeImg === item.thumbnail ? style.activeThumbnail : ''
+                      activeImg === idx ? style.activeThumbnail : ''
                     }`}
                     src={item.thumbnail}
                     alt="shoes"
@@ -98,7 +99,7 @@ export const ProductShowBar = () => {
       {isModalOpen && (
         <Modal onClick={handleModalClose}>
           <div className={style.wrapper}>
-            <button className={style.close__btn}>
+            <button onClick={handleModalClose} className={style.close__btn}>
               <IconClose />
             </button>
             <img
