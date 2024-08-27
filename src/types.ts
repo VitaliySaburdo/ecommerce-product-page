@@ -3,6 +3,6 @@ export interface Order {
   img: string;
   name: string;
   price: number;
-  count: number;
+  quantity: number;
   total: number;
 }

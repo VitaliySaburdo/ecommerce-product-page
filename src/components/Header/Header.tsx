@@ -80,7 +80,7 @@ export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
                   height={22}
                 />
                 {orders && orders.length > 0 && (
-                  <span className={style.count}>{orders[0].count}</span>
+                  <span className={style.count}>{orders[0].quantity}</span>
                 )}
               </button>
             </li>

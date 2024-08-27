@@ -48,7 +48,7 @@ export const Cart: React.FC<CartProps> = ({
                     <div>
                       <p className={style.text}>{order.name}</p>
                       <p>
-                        ${order.price.toFixed(2)} x {order.count}{' '}
+                        ${order.price.toFixed(2)} x {order.quantity}{' '}
                         <span className={style.total}>
                           ${order.total.toFixed(2)}
                         </span>

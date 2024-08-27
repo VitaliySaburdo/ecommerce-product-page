@@ -24,7 +24,7 @@ export const Description: React.FC<descriptionProps> = ({ addToCart }) => {
       img: img,
       name: name,
       price: price,
-      count: count,
+      quantity: count,
       total: price * count,
     };
     addToCart(newOrder);
