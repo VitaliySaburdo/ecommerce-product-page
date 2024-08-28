@@ -6,11 +6,19 @@
 
 .wrapper {
   position: absolute;
+  z-index: 100;
   top: 80px;
-  right: 160px;
+  right: 50%;
+  transform: translateX(50%);
   border-radius: 10px;
   background-color: $white;
   box-shadow: 0px 8px 23px -5px rgba(0, 0, 0, 0.45);
+
+  @include mq(desk) {
+    top: 80px;
+    right: 260px;
+    transform: translateX(0);
+  }
 }
 
 .decor {
