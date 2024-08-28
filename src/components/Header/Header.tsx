@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Order } from '../../types';
+import { Cart } from '../Cart';
+import { NavBar } from '../NavBar';
 import logo from '../../assets/images/logo.svg';
 import cart from '../../assets/images/icon-cart.svg';
 import avatar from '../../assets/images/image-avatar.png';
 import style from './Header.module.scss';
-import { Cart } from '../Cart';
 
 interface HeaderProps {
   orders?: Order[];
@@ -13,7 +14,6 @@ interface HeaderProps {
 }
 
 export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
-  const [activeLink, setActiveLink] = useState<string>('women');
   const [isCartVisible, setIsCartVisible] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
@@ -23,12 +23,6 @@ export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
       return () => clearTimeout(timer);
     }
   }, [isHovered]);
-
-  const linkArr = ['collections', 'men', 'women', 'about', 'contact'];
-
-  const handleOnActiveLink = (nameLink: string) => {
-    setActiveLink(nameLink);
-  };
 
   return (
     <>
@@ -41,27 +35,7 @@ export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
             width={140}
             height={20}
           />
-          <nav className={style.nav}>
-            <ul className={style.list}>
-              {linkArr.map((item, idx) => {
-                return (
-                  <li key={idx}>
-                    <a
-                      href="#"
-                      onClick={() => handleOnActiveLink(item)}
-                      className={
-                        activeLink === item
-                          ? `${style.link} ${style.active}`
-                          : `${style.link}`
-                      }
-                    >
-                      {item}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+          <NavBar />
           <ul className={style.user__menu}>
             <li className={style.cart__container}>
               <button

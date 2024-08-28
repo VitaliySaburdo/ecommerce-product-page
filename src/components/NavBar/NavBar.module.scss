@@ -1,0 +1,43 @@
+@import '../../assets/styles/index.scss';
+
+.list {
+  display: flex;
+  gap: 35px;
+  height: 22px;
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.nav {
+  display: none;
+  @include mq(desk) {
+    display: block;
+    margin-left: 55px;
+    margin-right: auto;
+  }
+}
+
+.link {
+  position: relative;
+  font-size: 18px;
+  color: $dark-grayish-blue;
+  padding-bottom: 47px;
+  &::after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background-color: $orange;
+    transition: opacity 0.3s;
+  }
+  &.active::after {
+    opacity: 1;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
