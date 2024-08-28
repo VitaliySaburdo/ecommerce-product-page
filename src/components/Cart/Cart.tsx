@@ -25,6 +25,7 @@ export const Cart: React.FC<CartProps> = ({
 
   return (
     <div
+      onClick={() => setIsHovered(true)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={style.wrapper}
