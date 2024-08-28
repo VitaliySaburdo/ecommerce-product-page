@@ -5,6 +5,7 @@
 }
 
 .wrapper {
+  width: 90%;
   position: absolute;
   z-index: 100;
   top: 80px;
@@ -15,6 +16,7 @@
   box-shadow: 0px 8px 23px -5px rgba(0, 0, 0, 0.45);
 
   @include mq(desk) {
+    width: 360px;
     top: 80px;
     right: 260px;
     transform: translateX(0);
@@ -41,7 +43,9 @@
 }
 
 .txt {
-  padding: 90px 110px 90px 110px;
+  text-align: center;
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 
 .item {
