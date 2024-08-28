@@ -16,16 +16,19 @@ export const Cart: React.FC<CartProps> = ({
   onConfirm,
 }) => {
   const onConfirmBtn = () => {
-    console.log(orders);
     onConfirm([]);
     setTimeout(() => {
       alert('Your order is confirmed. Check it in console');
     }, 200);
   };
 
+  // const toggleOnCartClick = () => {
+  //   setIsHovered((prevState) => !prevState);
+  // };
+
   return (
     <div
-      onClick={() => setIsHovered(true)}
+      // onClick={toggleOnCartClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={style.wrapper}

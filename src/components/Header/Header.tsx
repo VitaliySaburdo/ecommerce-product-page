@@ -19,7 +19,7 @@ export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
 
   useEffect(() => {
     if (!isHovered) {
-      const timer = setTimeout(() => setIsCartVisible(false), 500);
+      const timer = setTimeout(() => setIsCartVisible(false), 200);
       return () => clearTimeout(timer);
     }
   }, [isHovered]);

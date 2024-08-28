@@ -5,7 +5,7 @@
 }
 
 .wrapper {
-  width: 90%;
+  width: 360px;
   position: absolute;
   z-index: 100;
   top: 80px;
@@ -16,9 +16,8 @@
   box-shadow: 0px 8px 23px -5px rgba(0, 0, 0, 0.45);
 
   @include mq(desk) {
-    width: 360px;
     top: 80px;
-    right: 260px;
+    right: 20px;
     transform: translateX(0);
   }
 }
