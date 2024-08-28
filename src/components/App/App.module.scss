@@ -1,9 +1,16 @@
+@import '../../../src/assets/styles/index.scss';
+
 section {
-  padding-top: 90px;
   padding-bottom: 90px;
+  @include mq(desk) {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
 }
 
 .wrapper {
-  display: flex;
-  gap: 120px;
+  @include mq(desk) {
+    display: flex;
+    gap: 120px;
+  }
 }

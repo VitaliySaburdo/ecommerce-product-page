@@ -1,25 +1,41 @@
 @import '../../assets/styles/index.scss';
 
+.description__container {
+  padding-left: 25px;
+  padding-right: 25px;
+  @include mq(desk) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .name {
-  margin-top: 66px;
   color: $dark-grayish-blue;
   font-weight: $bold;
   margin-bottom: 30px;
+  @include mq(desk) {
+    margin-top: 66px;
+  }
 }
+
 .title {
-  width: 420px;
   color: $black;
   font-size: 34px;
   font-weight: $bold;
   margin-bottom: 50px;
+  @include mq(desk) {
+    width: 420px;
+  }
 }
 
 .description {
-  width: 420px;
   line-height: 2;
   color: $dark-grayish-blue;
   font-weight: $regular;
   margin-bottom: 35px;
+  @include mq(desk) {
+    width: 420px;
+  }
 }
 
 .info {

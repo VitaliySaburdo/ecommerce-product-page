@@ -41,7 +41,7 @@ export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
             width={140}
             height={20}
           />
-          <nav>
+          <nav className={style.nav}>
             <ul className={style.list}>
               {linkArr.map((item, idx) => {
                 return (

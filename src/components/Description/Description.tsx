@@ -46,7 +46,7 @@ export const Description: React.FC<descriptionProps> = ({ addToCart }) => {
   };
 
   return (
-    <div>
+    <div className={style.description__container}>
       <p className={style.name}>SNEAKER COMPANY</p>
       <h1 className={style.title}>{name}</h1>
       <p className={style.description}>

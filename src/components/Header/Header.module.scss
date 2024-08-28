@@ -4,10 +4,13 @@
   width: 320px;
   margin-left: auto;
   margin-right: auto;
-  @media screen and (min-width: 375px) {
-    width: 375px;
-  }
+  padding-left: 25px;
+  padding-right: 25px;
+  width: 325px;
+
   @media screen and (min-width: 1440px) {
+    padding-left: 0;
+    padding-right: 0;
     width: 1440px;
   }
 }
@@ -15,11 +18,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid $grayish-blue;
+  @include mq(desk) {
+    border-bottom: 1px solid $grayish-blue;
+  }
 }
 
 .logo {
-  height: 22px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .list {
@@ -30,9 +36,13 @@
   padding-bottom: 45px;
 }
 
-nav {
-  margin-left: 55px;
-  margin-right: auto;
+.nav {
+  display: none;
+  @include mq(desk) {
+    display: block;
+    margin-left: 55px;
+    margin-right: auto;
+  }
 }
 
 .link {
@@ -63,24 +73,30 @@ nav {
 .user__menu {
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 20px;
+  @include mq(desk) {
+    gap: 50px;
+  }
 }
 
 .btn,
 .btn__profile {
   position: relative;
   display: flex;
-  border: none;
-  padding: 0;
-  background-color: transparent;
-  cursor: pointer;
+  @include invisible-btn;
   height: 100%;
 }
 
 .btn__profile {
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   transition: box-shadow 0.3s ease;
   box-shadow: 0 0 0 2px transparent;
+  @include mq(desk) {
+    width: 52px;
+    height: 52px;
+  }
 
   &:hover {
     box-shadow: 0 0 0 2px $orange;

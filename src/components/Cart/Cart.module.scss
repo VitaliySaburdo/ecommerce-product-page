@@ -42,11 +42,8 @@
 }
 
 .btn {
-  background-color: transparent;
-  border: none;
+  @include invisible-btn;
   display: flex;
-  padding: 0;
-  cursor: pointer;
 }
 
 .shell {
