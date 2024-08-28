@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from '../Modal/Modal';
 import product_1 from '../../assets/images/image-product-1.jpg';
 import product_2 from '../../assets/images/image-product-2.jpg';
@@ -34,34 +34,38 @@ export const ProductShowBar = () => {
     setCurrentIdx(idx);
   };
 
-  const handleImageClick = () => {
-    setIsModalOpen(true);
-  };
-
   const handleModalClose = () => {
     setIsModalOpen(false);
     setActiveImg(currentIdx);
   };
 
   const onNextBtn = () => {
-    setCurrentIdx(currentIdx + 1);
-    if (currentIdx === 3) {
-      setCurrentIdx(0);
-    }
-    return images[currentIdx].full;
+    setCurrentIdx((prevIdx) => (prevIdx + 1) % images.length);
   };
 
   const onPrevBtn = () => {
-    setCurrentIdx(currentIdx - 1);
-    if (currentIdx === 0) {
-      setCurrentIdx(3);
-    }
-    return images[currentIdx].full;
+    setCurrentIdx((prevIdx) => (prevIdx - 1 + images.length) % images.length);
   };
+
+  const handleImageClick = () => {
+    if (window.innerWidth >= 1440) {
+      setIsModalOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    const screen = window.matchMedia('(max-width: 1439px)');
+    if (!screen.matches) {
+      window.addEventListener('resize', handleImageClick);
+    }
+    return () => {
+      window.removeEventListener('resize', handleImageClick);
+    };
+  }, []);
 
   return (
     <>
-      <div>
+      <div className={style.wrapper}>
         <img
           onClick={handleImageClick}
           className={style.main__img}
@@ -70,6 +74,26 @@ export const ProductShowBar = () => {
           width={500}
           height={500}
         />
+        <div className={style.button__block}>
+          <button
+            onClick={() =>
+              setActiveImg(
+                (prevIdx) => (prevIdx - 1 + images.length) % images.length
+              )
+            }
+            className={`${style.slide__btn} ${style.previous}`}
+          >
+            <IconPrev className={style.icon} />
+          </button>
+          <button
+            onClick={() =>
+              setActiveImg((prevIdx) => (prevIdx + 1) % images.length)
+            }
+            className={`${style.slide__btn} ${style.next}`}
+          >
+            <IconNext className={style.icon} />
+          </button>
+        </div>
         <ul className={style.list}>
           {images.map((item, idx) => {
             return (

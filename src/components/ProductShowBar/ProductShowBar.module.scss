@@ -54,6 +54,12 @@
   position: relative;
 }
 
+.button__block {
+  @include mq(desk) {
+    display: none;
+  }
+}
+
 .next__btn {
   position: absolute;
   @include invisible-btn;
@@ -75,20 +81,32 @@
   @include invisible-btn;
   @include centered-flex;
   color: #69707d;
-  top: 245px;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: $white;
   color: #1d2026;
+  top: 170px;
+  @include mq(desk) {
+    width: 60px;
+    height: 60px;
+    top: 245px;
+  }
+
   &:hover {
     color: $orange;
   }
 }
 
 .previous {
-  left: -30px;
+  left: 15px;
+  @include mq(desk) {
+    left: -30px;
+  }
 }
 .next {
-  right: -30px;
+  right: 15px;
+  @include mq(desk) {
+    right: -30px;
+  }
 }
