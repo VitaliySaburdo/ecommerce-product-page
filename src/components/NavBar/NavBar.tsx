@@ -9,6 +9,7 @@ export const NavBar = () => {
   };
 
   const linkArr = ['collections', 'men', 'women', 'about', 'contact'];
+
   return (
     <>
       <nav className={style.nav}>
