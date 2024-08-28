@@ -54,11 +54,13 @@ export const Description: React.FC<descriptionProps> = ({ addToCart }) => {
         Featuring a durable rubber outer sole, they`ll withstand everything the
         weather can offer.
       </p>
-      <div className={style.info}>
-        <p className={style.price}>${price.toFixed(2)}</p>
-        <p className={style.discount}>50%</p>
+      <div className={style.price__wrapper}>
+        <div className={style.info}>
+          <p className={style.price}>${price.toFixed(2)}</p>
+          <p className={style.discount}>50%</p>
+        </div>
+        <p className={style.old__price}>$250.00</p>
       </div>
-      <p className={style.old__price}>$250.00</p>
       <div className={style.box}>
         <div className={style.wrapper}>
           <button onClick={decrementCount} className={style.btn}>
