@@ -16,8 +16,7 @@
   box-shadow: 0px 8px 23px -5px rgba(0, 0, 0, 0.45);
 
   @include mq(desk) {
-    top: 80px;
-    right: 20px;
+    right: 8%;
     transform: translateX(0);
   }
 }
