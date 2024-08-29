@@ -54,7 +54,7 @@ export const ProductShowBar = () => {
   };
 
   useEffect(() => {
-    const screen = window.matchMedia('(max-width: 1439px)');
+    const screen = window.matchMedia('(min-width: 1439px)');
     if (!screen.matches) {
       window.addEventListener('resize', handleImageClick);
     }
