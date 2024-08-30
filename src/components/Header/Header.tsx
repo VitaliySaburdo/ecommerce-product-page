@@ -41,6 +41,7 @@ export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
         <header className={style.header}>
           <button onClick={openMobileMenu} className={style.mobile__btn}>
             <Menu />
+            <span className={style.visually_hidden}>Menu</span>
           </button>
           <img
             className={style.logo}

@@ -139,12 +139,14 @@ export const ProductShowBar = () => {
               className={`${style.slide__btn} ${style.previous}`}
             >
               <IconPrev className={style.icon} />
+              <span className={style.visually_hidden}>previous button</span>
             </button>
             <button
               onClick={onNextBtn}
               className={`${style.slide__btn} ${style.next}`}
             >
               <IconNext className={style.icon} />
+              <span className={style.visually_hidden}>next button</span>
             </button>
             <ul className={style.modalList}>
               {images.map((item, idx) => (
