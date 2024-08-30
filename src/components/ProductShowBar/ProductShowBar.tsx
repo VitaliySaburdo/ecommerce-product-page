@@ -84,6 +84,7 @@ export const ProductShowBar = () => {
             className={`${style.slide__btn} ${style.previous}`}
           >
             <IconPrev className={style.icon} />
+            <span className={style.visually_hidden}>previous button</span>
           </button>
           <button
             onClick={() =>
@@ -92,6 +93,7 @@ export const ProductShowBar = () => {
             className={`${style.slide__btn} ${style.next}`}
           >
             <IconNext className={style.icon} />
+            <span className={style.visually_hidden}>next button</span>
           </button>
         </div>
         <ul className={style.list}>
