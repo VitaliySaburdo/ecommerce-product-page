@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Modal } from '../Modal/Modal';
 import product_1 from '../../assets/images/image-product-1.jpg';
 import product_2 from '../../assets/images/image-product-2.jpg';
@@ -18,49 +18,49 @@ export const ProductShowBar = () => {
   const [currentIdx, setCurrentIdx] = useState(activeImg);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const images = [
-    { thumbnail: product_1_thumbnail, full: product_1 },
-    { thumbnail: product_2_thumbnail, full: product_2 },
-    { thumbnail: product_3_thumbnail, full: product_3 },
-    { thumbnail: product_4_thumbnail, full: product_4 },
-  ];
+  const images = useMemo(
+    () => [
+      { thumbnail: product_1_thumbnail, full: product_1 },
+      { thumbnail: product_2_thumbnail, full: product_2 },
+      { thumbnail: product_3_thumbnail, full: product_3 },
+      { thumbnail: product_4_thumbnail, full: product_4 },
+    ],
+    []
+  );
 
-  const HandleOnClick = (idx: number) => {
-    setActiveImg(idx);
-    setCurrentIdx(idx);
-  };
-
-  const HandleOnModalClick = (idx: number) => {
-    setCurrentIdx(idx);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-    setActiveImg(currentIdx);
-  };
-
-  const onNextBtn = () => {
-    setCurrentIdx((prevIdx) => (prevIdx + 1) % images.length);
-  };
-
-  const onPrevBtn = () => {
-    setCurrentIdx((prevIdx) => (prevIdx - 1 + images.length) % images.length);
-  };
-
-  const handleImageClick = () => {
+  const handleImageClick = useCallback(() => {
     if (window.innerWidth >= 1440) {
       setIsModalOpen(true);
     }
-  };
+  }, []);
+
+  const handleModalClose = useCallback(() => {
+    setIsModalOpen(false);
+    setActiveImg(currentIdx);
+  }, [currentIdx]);
+
+  const onNextBtn = useCallback(() => {
+    setCurrentIdx((prevIdx) => (prevIdx + 1) % images.length);
+  }, [images.length]);
+
+  const onPrevBtn = useCallback(() => {
+    setCurrentIdx((prevIdx) => (prevIdx - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const handleThumbnailClick = useCallback((idx: number) => {
+    setActiveImg(idx);
+    setCurrentIdx(idx);
+  }, []);
 
   useEffect(() => {
-    const screen = window.matchMedia('(min-width: 1439px)');
-    if (!screen.matches) {
-      window.addEventListener('resize', handleImageClick);
-    }
-    return () => {
-      window.removeEventListener('resize', handleImageClick);
+    const handleResize = () => {
+      if (window.innerWidth < 1440) {
+        setIsModalOpen(false);
+      }
     };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -101,7 +101,7 @@ export const ProductShowBar = () => {
             return (
               <li key={idx}>
                 <button
-                  onClick={() => HandleOnClick(idx)}
+                  onClick={() => handleThumbnailClick(idx)}
                   className={
                     activeImg === idx
                       ? `${style.btn} ${style.active}`
@@ -154,7 +154,7 @@ export const ProductShowBar = () => {
               {images.map((item, idx) => (
                 <li key={idx}>
                   <button
-                    onClick={() => HandleOnModalClick(idx)}
+                    onClick={() => handleThumbnailClick(idx)}
                     className={
                       currentIdx === idx
                         ? `${style.btn} ${style.active}`
