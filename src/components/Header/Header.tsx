@@ -63,7 +63,7 @@ export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
             }}
           >
             <Close onClick={closeMobileMenu} />
-            <NavBar />
+            <NavBar closeMobileMenu={closeMobileMenu} />
           </div>
           <ul className={style.user__menu}>
             <li className={style.cart__container}>

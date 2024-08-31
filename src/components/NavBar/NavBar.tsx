@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import style from './NavBar.module.scss';
 
-export const NavBar = () => {
+interface NavBarProps {
+  closeMobileMenu?: () => void;
+}
+
+export const NavBar: React.FC<NavBarProps> = ({ closeMobileMenu }) => {
   const [activeLink, setActiveLink] = useState<string>('women');
 
   const handleOnActiveLink = (nameLink: string) => {
@@ -19,7 +23,10 @@ export const NavBar = () => {
               <li key={idx}>
                 <a
                   href="#"
-                  onClick={() => handleOnActiveLink(item)}
+                  onClick={() => {
+                    handleOnActiveLink(item);
+                    closeMobileMenu?.();
+                  }}
                   className={
                     activeLink === item
                       ? `${style.link} ${style.active}`
