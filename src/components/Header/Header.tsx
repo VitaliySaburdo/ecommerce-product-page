@@ -38,6 +38,9 @@ export const Header = ({ orders, onDelete, onConfirm }: HeaderProps) => {
   return (
     <>
       <div className={style.heder__container}>
+        <div
+          className={`${style.overlay} ${isMenuOpen ? style.visible : ''}`}
+        ></div>
         <header className={style.header}>
           <button onClick={openMobileMenu} className={style.mobile__btn}>
             <Menu />
